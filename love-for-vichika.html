@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Pann Vichika ❤️</title>
+<style>
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    background:linear-gradient(to top,#0f2027,#203a43,#2c5364);
+    color:white;
+}
+
+/* Stars */
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    animation: twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+    from{opacity:0.2;}
+    to{opacity:1;}
+}
+
+/* Box */
+.box{
+    background:rgba(255,255,255,0.1);
+    padding:25px;
+    border-radius:25px;
+    backdrop-filter:blur(10px);
+    animation:fadeIn 2s ease-in-out;
+    max-width:90%;
+}
+
+/* Buttons */
+button{
+    padding:12px 20px;
+    margin:8px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+.yesBtn{background:#ff4e88;color:white;box-shadow:0 0 15px #ff4e88;}
+.noBtn{background:white;color:#ff4e88;position:absolute;}
+
+/* Photos */
+.photo{
+    width:180px;
+    height:180px;
+    margin:15px;
+    object-fit:cover;
+    border-radius:15px;
+    border:3px solid #ff4e88;
+    box-shadow:0 0 15px #ff4e88;
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:floatUp 5s linear infinite;
+}
+
+/* Floating flowers */
+.flower{
+    position:absolute;
+    font-size:18px;
+    animation:flowerUp 6s linear infinite;
+    opacity:0.9;
+}
+
+/* Animations */
+@keyframes floatUp{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-800px);opacity:0;}
+}
+
+@keyframes flowerUp{
+    0%{transform:translateY(0) rotate(0deg); opacity:1;}
+    100%{transform:translateY(-900px) rotate(360deg); opacity:0;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<script>
+for(let i=0;i<100;i++){
+    let s=document.createElement("div");
+    s.classList.add("star");
+    s.style.left=Math.random()*window.innerWidth+"px";
+    s.style.top=Math.random()*window.innerHeight+"px";
+    document.body.appendChild(s);
+}
+</script>
+
+<div class="box">
+    <h1>Hi Pann Vichika ❤️</h1>
+
+    <!-- Normal photos -->
+    <img class="photo" src="https://i.postimg.cc/9zTLMfbr/att-nq-Ikr-B4VMx-UMg-WOQff-NDtrx2Ss-P7ahvx-Yj-RKJWbv-OJI.jpg" onclick="openLetter()">
+    <img class="photo" src="https://i.postimg.cc/146vtzBg/att-Oyz-YPdz2g3-Gy-Mbr3n-Zq-Pfl44z-wuw7msz-Ac-Ix-DGAo8.jpg" onclick="openLetter()">
+
+    <p id="countdown"></p>
+    <p id="message" style="margin-top:15px;"></p>
+
+    <div id="buttons" style="display:none;">
+        <p>Will you stay with me forever? 💍</p>
+        <button class="yesBtn" onclick="celebrate()">Yes ❤️</button>
+        <button class="noBtn" id="noBtn">No 😢</button>
+    </div>
+</div>
+
+<!-- Hidden YouTube music -->
+<iframe id="ytMusic" width="0" height="0" style="display:none"
+src=""
+title="Say You Won’t Let Go - James Arthur"
+frameborder="0"
+allow="autoplay; encrypted-media"
+allowfullscreen>
+</iframe>
+
+<script>
+// Countdown from 25/01/2025
+let startDate=new Date("2025-01-25");
+function updateCountdown(){
+    let now=new Date();
+    let diff=Math.floor((now-startDate)/(1000*60*60*24));
+    document.getElementById("countdown").innerText="Days since we met: "+diff+" ❤️";
+}
+updateCountdown();
+setInterval(updateCountdown,1000*60*60);
+
+// Password protection + play YouTube music
+function openLetter(){
+  let pw = prompt("Enter secret password to open my heart 💌");
+  if(pw && pw.toLowerCase()==="vichikalove"){  // <-- NEW PASSWORD
+    document.getElementById("ytMusic").src =
+      "https://www.youtube.com/embed/LjhCEhWiKXk?autoplay=1&loop=1&playlist=LjhCEhWiKXk";
+    startLove();
+  } else {
+    alert("Oops! Wrong password 😅");
+  }
+}
+
+// Typewriter love message
+let text="Only when you open my heart does the music start 🎵💖. From the moment you entered my life, everything became brighter.Your smile is my favorite view, and your laughter is the melody I want to hear every day. Every time I think of you, my heart feels full, and every memory we share becomes a treasure I keep forever. I promise to grow stronger and better, not just for me, but for us. You are my inspiration, my joy, and the love I never knew I was waiting for. I will hold you close, protect you, and love you endlessly, today, tomorrow, and for all the days to come. You are my heart, my home, my everything ❤️";
+let i=0;
+function startLove(){
+    let msg=document.getElementById("message");
+    let interval=setInterval(function(){
+        msg.innerHTML+=text.charAt(i);
+        i++;
+        if(i>=text.length){
+            clearInterval(interval);
+            document.getElementById("buttons").style.display="block";
+        }
+    },40);
+}
+
+// Celebrate Yes with fireworks hearts
+function celebrate(){
+    for(let i=0;i<70;i++){
+        let heart=document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML="💖";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.bottom="0";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }
+    // Full-screen heart fireworks
+    for(let i=0;i<100;i++){
+        let f=document.createElement("div");
+        f.classList.add("heart");
+        f.style.fontSize=(Math.random()*40+20)+"px";
+        f.innerHTML="❤️";
+        f.style.left=Math.random()*window.innerWidth+"px";
+        f.style.top=Math.random()*window.innerHeight+"px";
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),3000);
+    }
+    alert("You just made me the happiest person alive ❤️");
+}
+
+// No button runs away
+let noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",function(){
+    noBtn.style.left=Math.random()*window.innerWidth+"px";
+    noBtn.style.top=Math.random()*window.innerHeight+"px";
+});
+
+// Floating flowers following cursor
+document.addEventListener("mousemove", function(e){
+    const flowers=["🌸","🌺","🌷"];
+    let flower=document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
+    flower.style.left=(e.clientX + Math.random()*20 - 10)+"px";
+    flower.style.top=(e.clientY + Math.random()*20 - 10)+"px";
+    flower.style.fontSize=(Math.random()*15+15)+"px";
+    document.body.appendChild(flower);
+    setTimeout(()=>flower.remove(),2000);
+});
+
+// Floating flowers periodically
+function createFlower(){
+    const flowers=["🌸","🌺","🌷"];
+    let flower=document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
+    flower.style.left=Math.random()*window.innerWidth+"px";
+    flower.style.bottom="0";
+    flower.style.fontSize=(Math.random()*15+15)+"px";
+    document.body.appendChild(flower);
+    setTimeout(()=>flower.remove(),6000);
+}
+setInterval(createFlower,400);
+</script>
+</body>
+</html>
